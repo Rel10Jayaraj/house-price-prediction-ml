@@ -1,4 +1,4 @@
-# 🏡 House Price Prediction for Massachusetts  M.S. in Business Analytics 
+# 🏡 House Price Prediction for Massachusetts ML 
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python)
 ![Libraries](https://img.shields.io/badge/Libraries-Pandas%20%7C%20Scikit--learn-orange?style=for-the-badge)
