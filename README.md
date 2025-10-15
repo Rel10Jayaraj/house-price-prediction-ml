@@ -1,150 +1,139 @@
-🏡 House Price Prediction using Machine Learning
-📊 Predict housing prices based on features like area, bedrooms, bathrooms, parking, and furnishing status using Linear Regression in Python.
-🚀 Project Overview
+# 🏡 House Price Prediction for Massachusetts  M.S. in Business Analytics 
 
-This project applies supervised machine learning to predict house prices based on a dataset (Housing.csv) that includes structural and location-related features.
-The workflow includes:
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python)
+![Libraries](https://img.shields.io/badge/Libraries-Pandas%20%7C%20Scikit--learn-orange?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-Data preprocessing and encoding
+A machine learning project that predicts housing prices in Massachusetts using a Linear Regression model. The application is built with Python and Scikit-learn, allowing for interactive price estimation based on user-provided house features.
 
-Feature scaling using StandardScaler
+---
 
-Model training with Linear Regression
+## 🚀 Project Overview
 
-Interactive prediction through user input
+This project demonstrates a complete machine learning workflow for a regression task. It takes a dataset of housing information, processes it, trains a predictive model, and provides an interactive console application for users to get instant price estimates.
 
-Model and scaler saving using Joblib
+### ✨ Key Features
+-   ✅ **Clean & Modular Code:** Scripts are separated by concern (training vs. prediction).
+-   🤖 **Interactive Prediction:** A user-friendly command-line interface to input house features.
+-   🛠️ **Data Preprocessing:** Handles categorical data, feature engineering, and scaling.
+-   📦 **Saved Models:** Uses `Joblib` to save and reuse the trained model and scaler, so you don't have to retrain every time.
+-   📉 **Performance Metrics:** Evaluates the model using the R² score to measure its accuracy.
 
-🧠 Model Training
-🔹 File: Train_Housing_Model.py
+---
 
-This script:
+## 📊 Model Performance
 
-Loads the dataset
+The Linear Regression model was trained and evaluated to determine its predictive accuracy on unseen data.
 
-Encodes categorical data (Yes/No, Furnishing status)
+> **R² Score (Test Data): `~0.78`**
 
-Adds a new feature: area_per_bedroom
+*This score indicates that the model can explain approximately 78% of the variance in the house prices, which is a solid result for a baseline model. The score may vary slightly with different data splits.*
 
-Scales numeric features
+---
 
-Trains a Linear Regression model
+## ⚙️ Project Workflow & Files
 
-Saves the trained model and scaler
+The repository is structured into two main Python scripts for training the model and making predictions.
 
-✅ Outputs:
+### 🧠 1. Model Training
+🔹 **File:** `Train_Housing_Model.py`
 
-housing_model.joblib
+This script is the core of the training process. It performs the following steps:
+1.  **Loads** the `Housing.csv` dataset.
+2.  **Encodes** categorical columns (`yes`/`no` and furnishing status) into numerical format.
+3.  **Engineers** a new feature (`area_per_bedroom`) to improve model performance.
+4.  **Splits** the data into training and testing sets.
+5.  **Scales** numerical features using `StandardScaler` to normalize the data.
+6.  **Trains** a Linear Regression model on the prepared data.
+7.  **Saves** the final model (`housing_model.joblib`) and the scaler (`scaler.joblib`).
 
-scaler.joblib
+*A safe version, `Train_Housing_Model_Safe.py`, is also included with enhanced error handling and logging.*
 
-⚙️ Safe Training Version
-🔹 File: Train_Housing_Model_Safe.py
+### 💬 2. Price Prediction
+🔹 **File:** `Predict_House_Price.py`
 
-Same as above, but includes:
+This script provides an interactive interface for the user:
+1.  **Loads** the pre-trained `housing_model.joblib` and `scaler.joblib`.
+2.  **Prompts** the user to enter details for a house (area, bedrooms, bathrooms, etc.).
+3.  **Handles Missing Input** by automatically using the median value from the original dataset.
+4.  **Prepares** the input data by scaling and ordering features exactly like the training data.
+5.  **Predicts** the price and displays the final, formatted result to the user.
 
-Try/except blocks for missing files
+---
 
-Detailed progress messages
+## 🛠️ Getting Started
 
-Better for debugging and stable environments
+Follow these steps to run the project on your local machine.
 
-💬 Predicting Prices
-🔹 File: Predict_House_Price.py
-
-This script:
-
-Loads your saved model, scaler, and dataset
-
-Asks the user for input (like area, bedrooms, etc.)
-
-Automatically fills missing data with median values
-
-Applies correct feature scaling
-
-Predicts and displays the estimated price
-
-📘 Example Run
-
-🚀 Starting house price prediction...
-✅ Model, scaler, and original dataset loaded successfully.
-
---- 🏡 Enter House Details ---
-Enter the area in sq ft (e.g., 3500): 2888
-Enter the number of bedrooms (e.g., 3): 6
-Enter the number of bathrooms (e.g., 2): 2.5
-...
-The estimated price of the house is: $95,320.55
-
-🧩 Folder Structure
-F:/1 PROJECT/AI ML/BRAIN/
-│
-├── Housing.csv
-├── Train_Housing_Model.py
-├── Train_Housing_Model_Safe.py
-├── Predict_House_Price.py
-├── housing_model.joblib
-└── scaler.joblib
-
-📦 Requirements
-
-Create a requirements.txt file with this content:
-
-pandas
-numpy
-scikit-learn
-joblib
+### 📦 Requirements
+First, create a `requirements.txt` file with the following content:
+pandas numpy scikit-learn joblib
 
 
-Install with:
+### ⚙️ Installation & Usage
 
-pip install -r requirements.txt
+1.  **Clone the repository:**
+    ```bash
+    git clone <your-repo-url>
+    cd <your-repo-folder>
+    ```
 
-🧰 Tools & Libraries Used
+2.  **Install the required packages:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Python 3.10+
+3.  **Train the model (only needs to be done once):**
+    ```bash
+    python Train_Housing_Model.py
+    ```
+    *This will create `housing_model.joblib` and `scaler.joblib`.*
 
-Pandas for data analysis
+4.  **Run the prediction script:**
+    ```bash
+    python Predict_House_Price.py
+    ```
 
-NumPy for numerical operations
+### 📘 Example Run
+🚀 Starting house price prediction... ✅ Model, scaler, and original dataset loaded successfully.
 
-Scikit-learn for ML model and scaling
+--- 🏡 Enter House Details (type 'N/A' if unknown) --- Enter the area in sq ft (e.g., 3500): 2888 
+Enter the number of bedrooms (e.g., 3): 6 
+Enter the number of bathrooms (e.g., 2): 2.5 
+Enter the number of stories/floors (e.g., 2): 3 
+Enter the number of parking spots (e.g., 2): 1 
+Is the house on a main road? (yes/no): no 
+Does it have a guest room? (yes/no): yes 
+Does it have a basement? (yes/no): yes 
+Does it have hot water heating? (yes/no): yes 
+Does it have air conditioning? (yes/no): yes 
+Is it in a preferred area? (yes/no): yes 
+What is the furnishing status? (furnished/semi-furnished/unfurnished/n/a): unfurnished
 
-Joblib for saving model and scaler
+--- 🏡 House Price Prediction --- The estimated price of the house is: $95,320.55
 
-📈 Model Performance
+---
 
-The Linear Regression model achieved an R² score on test data:
+## 💡 Future Improvements
+-   **Add a GUI:** Develop a graphical interface using `Tkinter` or `Streamlit` for a more user-friendly experience.
+-   **Experiment with Models:** Incorporate more advanced models like Random Forest, Gradient Boosting, or XGBoost.
+-   **Deploy as an API:** Wrap the prediction script in an API using `Flask` or `FastAPI` to serve the model online.
 
-R² Score: 0.78 (approx.)
+---
 
+## 👨‍💻 Author
 
-(Varies slightly based on dataset split.)
+**Relton Abishek Jayaraj**
 
-🌟 Features
-
-✅ Clean and modular Python scripts
-✅ Handles missing user inputs
-✅ Scalable and easily extendable
-✅ Console-based interactive prediction
-✅ Uses real-world housing data
-
-
-💡 Future Improvements
-
-Add GUI (Tkinter / Streamlit)
-
-Include more ML models (Random Forest, XGBoost)
-
-Deploy via Flask or FastAPI
-
-👨‍💻 Author
-
-Relton Abishek Jayaraj
 📍 Boston, MA
+<br>
 🎓 M.S. in Business Analytics @ UMass Boston
-🎵 Worship leader & data enthusiast
+<br>
+Data/Business Analyst
 
-🔗 GitHub: Rel10Jayaraj
-
-💼 LinkedIn: linkedin.com/in/reltonabishek
+<a href="https://github.com/Rel10Jayaraj" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+</a>
+<a href="https://linkedin.com/in/reltonabishekjayaraj" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+</a>
